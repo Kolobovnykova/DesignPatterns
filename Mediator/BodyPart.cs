@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Mediator
+﻿namespace Mediator
 {
     public class BodyPart
     {
