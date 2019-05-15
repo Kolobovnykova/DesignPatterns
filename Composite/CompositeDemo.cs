@@ -15,21 +15,15 @@ namespace Composite
             var emily = new Person {Name = "Emily"};
             var sophia = new Person {Name = "Sophia"};
             var brian = new Person {Name = "Brian"};
-            var developers = new Group {Name = "Developers", Members = {joe, jake, emily}};
+            var oldBob = new Person {Name = "Old Bob"};
+            var newBob = new Person {Name = "New Bob"};
+            var bobs = new Group {Members = {newBob, oldBob}};
+            var developers = new Group {Name = "Developers", Members = {joe, jake, emily, bobs}};
 
-            var parties = new List<IParty> {developers, sophia, brian};
+            var parties = new Group {Members = {developers, sophia, brian}};
 
-            var totalToSplitBy = parties.Count;
-
-            var amountForEach = goldForKill / totalToSplitBy;
-            var leftOver = goldForKill % totalToSplitBy;
-
-            foreach (var partyMember in parties)
-            {
-                partyMember.Gold += amountForEach + leftOver;
-                leftOver = 0;
-                partyMember.Stats();
-            }
+            parties.Gold += goldForKill;
+            parties.Stats();
         }
     }
 }
