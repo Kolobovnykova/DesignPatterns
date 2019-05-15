@@ -1,4 +1,5 @@
 ﻿using System;
+using Composite;
 
 namespace DesignPatterns
 {
@@ -7,6 +8,9 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            CompositeDemo.Composite();
+
+            Console.ReadKey();
         }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Composite
 {
-    class CompositeDemo
+    public static class CompositeDemo
     {
-        public void Composite()
+        public static void Composite()
         {
             int goldForKill = 1023;
             Console.WriteLine($"We gained {goldForKill} gold!");
@@ -17,31 +17,18 @@ namespace Composite
             var brian = new Person {Name = "Brian"};
             var developers = new Group {Name = "Developers", Members = {joe, jake, emily}};
 
-            var individuals = new List<Person> {sophia, brian};
-            var groups = new List<Group> {developers};
+            var parties = new List<IParty> {developers, sophia, brian};
 
-            var totalToSplitBy = individuals.Count + groups.Count;
+            var totalToSplitBy = parties.Count;
 
             var amountForEach = goldForKill / totalToSplitBy;
             var leftOver = goldForKill % totalToSplitBy;
 
-            foreach (var individual in individuals)
+            foreach (var partyMember in parties)
             {
-                individual.Gold += amountForEach + leftOver;
+                partyMember.Gold += amountForEach + leftOver;
                 leftOver = 0;
-                individual.Stats();
-            }
-
-            foreach (var group in groups)
-            {
-                var amountForEachGroupMember = amountForEach / group.Members.Count;
-                var leftOverForGroup = amountForEachGroupMember % group.Members.Count;
-                foreach (var member in group.Members)
-                {
-                    member.Gold += amountForEach + leftOver;
-                    leftOver = 0;
-                    member.Stats();
-                }
+                partyMember.Stats();
             }
         }
     }
