@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Adapter
+﻿namespace Adapter
 {
     public class OldElectricitySystem
     {
